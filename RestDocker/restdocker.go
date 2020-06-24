@@ -44,8 +44,8 @@ func GetOutboundIP() net.IP {
 
 /*
 	Para ejecutarlo:
-	go run firstdocker.go
-	1. docker build -t firstdocker .   //Contruir la imagen
+	go run restdocker.go
+	1. docker build -t restdocker .   //Contruir la imagen
 	2. docker run -p 8093:8093 restdocker    //Ejecutar la aplicación
 	3. ir  la URl http://localhost:8093/qwe
 */
