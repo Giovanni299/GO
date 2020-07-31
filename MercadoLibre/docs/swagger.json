@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API to get the items that a customer can buy a coupon.",
+        "title": "API Coupon MLA",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8084",
+    "paths": {
+        "/coupon/": {
+            "post": {
+                "description": "Get list of items",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Coupon"
+                ],
+                "summary": "Get list of items",
+                "parameters": [
+                    {
+                        "description": "Body: {item_ids, amount}",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "example": {"amount": 2500,"item_ids": ["MLA710902496", "MLA739047002", "MLA621847666"]},
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/main.response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.response": {
+            "type": "object",
+            "properties": {
+                "item_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "total": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

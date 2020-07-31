@@ -1,15 +1,23 @@
 package main
-import (	
-	"net/http"	
+
+import (
+	"net/http"
+
 	"github.com/labstack/echo"
 )
 
 type Person struct {
-	FirstName string 
-	LastName string 
+	FirstName string
+	LastName  string
 }
 
-func main()  {
+type User struct {
+	Name  string   `json:"name" xml:"name" form:"name" query:"name"`
+	Email string   `json:"email" xml:"email" form:"email" query:"email"`
+	Tags  []string `json:"tags" xml:"tags" form:"tags" query:"tags"`
+}
+
+func main() {
 	e := echo.New()
 
 	//Text/Plain
@@ -24,6 +32,11 @@ func main()  {
 
 	//No-content
 	e.GET("/nocontent", func(c echo.Context) error {
+		u := new(User)
+		if err := c.Bind(u); err != nil {
+			return err
+		}
+
 		return c.NoContent(http.StatusOK)
 	})
 
@@ -37,14 +50,14 @@ func main()  {
 	e.GET("/xml", func(c echo.Context) error {
 		return c.XML(http.StatusOK, people)
 	})
-	
+
 	e.Start(":8080")
 }
 
 func GetPerson() []Person {
 	p := Person{
-		FirstName : "qwe",
-		LastName : "asd",
+		FirstName: "qwe",
+		LastName:  "asd",
 	}
 
 	ps := make([]Person, 0)

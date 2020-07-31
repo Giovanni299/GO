@@ -1,0 +1,13 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a todo list management application",
+        "title": "Todo Application v5",
+        "contact": {},
+        "license": {},
+        "version": "5.0"
+    },
+    "host": "localhost:8089",
+    "basePath": "/api/v1",
+    "paths": {}
+}

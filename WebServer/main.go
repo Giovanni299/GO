@@ -1,6 +1,7 @@
 package main
 
 func main() {
+
 	port := ":3000"
 	server := NewServer(port)
 	server.AddHandle("/", HandleRoot)

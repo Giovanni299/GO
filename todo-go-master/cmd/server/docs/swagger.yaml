@@ -1,0 +1,10 @@
+basePath: /api/v1
+host: localhost:8089
+info:
+  contact: {}
+  description: This is a todo list management application
+  license: {}
+  title: Todo Application v5
+  version: "5.0"
+paths: {}
+swagger: "2.0"

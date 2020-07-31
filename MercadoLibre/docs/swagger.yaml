@@ -1,0 +1,45 @@
+definitions:
+  main.response:
+    properties:
+      item_ids:
+        items:
+          type: string
+        type: array
+      total:
+        type: number
+    type: object
+host: localhost:8084
+info:
+  contact: {}
+  description: API to get the items that a customer can buy a coupon.
+  license: {}
+  title: API Coupon MLA
+  version: "1.0"
+paths:
+  /coupon/:
+    post:
+      consumes:
+      - application/json
+      description: Get list of items
+      parameters:
+      - description: 'Body: {item_ids, amount}'
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.response'
+      summary: Get list of items
+      tags:
+      - Coupon
+swagger: "2.0"
