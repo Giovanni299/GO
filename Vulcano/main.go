@@ -24,7 +24,7 @@ var (
 func init() {
 	//Load .env file
 	if err := godotenv.Load(".env"); err != nil {
-		log.Fatalf("Error loading .env file")
+		log.Fatalf("Error loading .env file.")
 	}
 
 	dbHost = os.Getenv("dbHost")
@@ -53,13 +53,13 @@ func main() {
 	flag.Parse()
 
 	if *initDb {
-		if err := initializeDb(db); err != nil {
+		if err := database.initializeDb(db); err != nil {
 			log.Fatalf("Error initializing database: %v\n", err)
 		}
 	}
 
 	if *seed {
-		if err := seedDb(db); err != nil {
+		if err := database.seedDb(db); err != nil {
 			log.Fatalf("Error seeding database: %v\n", err)
 		}
 	}
